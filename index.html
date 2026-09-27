@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Résumé Complet : Équations & Inéquations - 2ème Année - Prof Grichi Borhen</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0f7ff',
+              100: '#e0effe',
+              500: '#0284c7',
+              700: '#0369a1',
+              800: '#075985',
+              900: '#0c4a6e',
+            },
+            tunisia: '#c8102e'
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- MathJax Configuration -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    @media print {
+      .no-print { display: none !important; }
+      body { background-color: #ffffff !important; color: #111827 !important; padding: 0 !important; }
+      .page-break { page-break-before: always; }
+      .sheet-container { box-shadow: none !important; border: 1px solid #cbd5e1 !important; margin: 0 !important; max-width: 100% !important; border-radius: 0 !important; }
+    }
+    .math-table td, .math-table th {
+      text-align: center;
+      vertical-align: middle;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      height: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background-color: #cbd5e1;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-800 antialiased font-sans selection:bg-sky-500 selection:text-white min-h-screen py-6 px-3 sm:px-6 md:px-10">
+
+  <header class="no-print max-w-5xl mx-auto mb-6 flex flex-wrap items-center justify-between gap-4 bg-white/90 backdrop-blur border border-slate-200/80 p-4 rounded-2xl shadow-sm">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-600 to-indigo-700 flex items-center justify-center text-white font-bold text-lg shadow-sm">
+        ∑
+      </div>
+      <div>
+        <h1 class="text-sm font-semibold text-slate-900 leading-tight">Document Pédagogique Officiel</h1>
+        <p class="text-xs text-slate-500">2<sup>ème</sup> Année Secondaire • Lycée Oueslatia</p>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="flex items-center gap-2">
+      <button onclick="downloadSelf()" class="inline-flex items-center gap-2 px-4 py-2 text-xs md:text-sm font-medium rounded-xl text-white bg-sky-600 hover:bg-sky-700 shadow-sm transition-all focus:ring-2 focus:ring-sky-500 focus:outline-none cursor-pointer">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/>
+        </svg>
+        <span>Télécharger ce fichier HTML</span>
+      </button>
+
+      <button onclick="window.print()" class="inline-flex items-center gap-2 px-4 py-2 text-xs md:text-sm font-medium rounded-xl text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-300 transition-all focus:ring-2 focus:ring-slate-400 focus:outline-none cursor-pointer">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6.72 13.829c-.24-1.077-.32-2.12-.32-3.149 0-4.418 3.582-8 8-8s8 3.582 8 8c0 1.029-.08 2.072-.32 3.149M3.75 14.25h16.5m-16.5 0a2.25 2.25 0 00-2.25 2.25v2.25a2.25 2.25 0 002.25 2.25h16.5a2.25 2.25 0 002.25-2.25v-2.25a2.25 2.25 0 00-2.25-2.25m-16.5 0v-4.5m16.5 4.5v-4.5"/>
+        </svg>
+        <span>Imprimer / PDF</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="sheet-container max-w-5xl mx-auto bg-white border border-slate-200 rounded-3xl shadow-xl overflow-hidden p-6 sm:p-10 md:p-12 space-y-10">
+
+    <!-- Official Header -->
+    <header class="border-b-2 border-slate-800 pb-6">
+      <div class="flex justify-between items-start text-xs sm:text-sm font-medium text-slate-600 mb-4">
+        <div>
+          <p class="font-bold text-slate-900 tracking-wide uppercase">Lycée Oueslatia</p>
+          <p class="text-sky-700 font-semibold">2<sup>ème</sup> Année Secondaire</p>
+        </div>
+        <div class="text-right">
+          <p class="font-bold text-slate-900">Prof: <span class="text-sky-800 font-extrabold">Grichi Borhen</span></p>
+          <p class="text-slate-500">Mathématiques</p>
+        </div>
+      </div>
+
+      <div class="text-center pt-2">
+        <p class="text-[11px] font-semibold tracking-widest text-slate-500 uppercase">République Tunisienne — Ministère de l'Éducation</p>
+        <div class="inline-block bg-slate-900 text-white font-extrabold text-lg sm:text-2xl px-6 py-2 rounded-xl mt-2 tracking-tight shadow">
+          RÉSUMÉ COMPLET DE COURS &amp; MÉTHODES OFFICIELLES
+        </div>
+        <h2 class="text-base sm:text-xl font-bold text-sky-800 mt-3">
+          Équations et Inéquations du Premier Degré à une Inconnue
+        </h2>
+        <div class="flex flex-wrap items-center justify-center gap-2 mt-2 text-xs font-semibold text-slate-600">
+          <span class="bg-sky-50 text-sky-700 px-3 py-1 rounded-full border border-sky-200">Niveau : 2<sup>ème</sup> Sciences / Info / Économie</span>
+          <span class="bg-slate-100 text-slate-700 px-3 py-1 rounded-full border border-slate-200">Année Scolaire 2026-2027</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="space-y-4">
+      <div class="flex items-center gap-3 border-b border-sky-200 pb-2">
+        <span class="bg-sky-700 text-white font-black text-sm px-3 py-1 rounded-lg">I</span>
+        <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 uppercase tracking-tight">
+          Équations du Premier Degré : $ax + b = 0$
+        </h3>
+      </div>
+
+      <p class="text-sm sm:text-base text-slate-700 leading-relaxed">
+        Toute équation linéaire se ramène par transposition et simplification à la forme canonique :
+        <span class="font-semibold text-slate-900 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">$ax = -b$ $(a, b \in \mathbb{R})$</span>.
+      </p>
+
+      <!-- Fundamental Theorem Table -->
+      <div class="overflow-x-auto rounded-2xl border border-slate-200 shadow-sm custom-scroll">
+        <table class="w-full text-left text-xs sm:text-sm">
+          <thead class="bg-slate-900 text-white uppercase text-[11px] tracking-wider">
+            <tr>
+              <th class="py-3 px-4">Hypothèse</th>
+              <th class="py-3 px-4">Résolution Algébrique</th>
+              <th class="py-3 px-4">Ensemble des Solutions $S_{\mathbb{R}}$</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200 bg-white">
+            <tr class="hover:bg-slate-50 transition-colors">
+              <td class="py-3.5 px-4 font-bold text-sky-800">$a \neq 0$</td>
+              <td class="py-3.5 px-4">On divise par $a$ : $x = -\dfrac{b}{a}$</td>
+              <td class="py-3.5 px-4 font-semibold text-emerald-700 bg-emerald-50/40">$S_{\mathbb{R}} = \left\{ -\dfrac{b}{a} \right\}$ <span class="text-xs text-slate-500 font-normal block sm:inline">(Solution unique)</span></td>
+            </tr>
+            <tr class="hover:bg-slate-50 transition-colors">
+              <td class="py-3.5 px-4 font-bold text-amber-700">$a = 0$ et $b = 0$</td>
+              <td class="py-3.5 px-4">$0 \cdot x = 0$ <span class="text-xs text-slate-500">(L'égalité est vérifiée pour tout $x \in \mathbb{R}$)</span></td>
+              <td class="py-3.5 px-4 font-semibold text-sky-800 bg-sky-50/40">$S_{\mathbb{R}} = \mathbb{R}$ <span class="text-xs text-slate-500 font-normal block sm:inline">(Infinité de solutions)</span></td>
+            </tr>
+            <tr class="hover:bg-slate-50 transition-colors">
+              <td class="py-3.5 px-4 font-bold text-rose-700">$a = 0$ et $b \neq 0$</td>
+              <td class="py-3.5 px-4">$0 \cdot x = -b \neq 0$ <span class="text-xs text-slate-500">(Impossible dans $\mathbb{R}$)</span></td>
+              <td class="py-3.5 px-4 font-semibold text-rose-700 bg-rose-50/40">$S_{\mathbb{R}} = \emptyset$ <span class="text-xs text-slate-500 font-normal block sm:inline">(Aucune solution)</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Null Product & Factorization -->
+      <div class="mt-4 bg-slate-50 border border-slate-200 rounded-2xl p-4 sm:p-5 space-y-3">
+        <h4 class="font-bold text-slate-900 text-sm sm:text-base flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-sky-600 inline-block"></span>
+          Équations Produit Nul &amp; Réflexes de Factorisation
+        </h4>
+        <div class="bg-white p-3 rounded-xl border border-slate-200 text-sm text-slate-700 shadow-sm">
+          <p class="font-semibold text-sky-900">Règle fondamentale :</p>
+          <p class="mt-1">Un produit de facteurs est nul si et seulement si l'un au moins des facteurs est nul :</p>
+          <div class="text-center font-bold text-sky-800 my-2 text-base">
+            $A(x) \cdot B(x) = 0 \iff A(x) = 0 \quad \text{ou} \quad B(x) = 0$
+          </div>
+        </div>
+
+        <div class="space-y-2 text-xs sm:text-sm text-slate-700">
+          <p class="font-semibold text-slate-800">Astuces de calcul indispensables en 2<sup>ème</sup> Année :</p>
+          <ul class="list-disc list-inside space-y-1 text-slate-600 pl-2">
+            <li><strong class="text-slate-800">Ne jamais développer</strong> une forme déjà factorisée ou factorisable immédiatement.</li>
+            <li>Factorisation par identité remarquable :
+              <span class="font-mono bg-white px-2 py-0.5 rounded border border-slate-200 text-slate-800 ml-1">$A^2 - B^2 = (A-B)(A+B)$</span> et
+              <span class="font-mono bg-white px-2 py-0.5 rounded border border-slate-200 text-slate-800 ml-1">$A^2 \pm 2AB + B^2 = (A \pm B)^2$</span>
+            </li>
+            <li><strong class="text-slate-800">Recherche de facteur commun caché :</strong> Repérer les opposés : $(3 - x) = -(x - 3)$.</li>
+          </ul>
+        </div>
+
+        <!-- Example Block -->
+        <div class="bg-emerald-50/70 border border-emerald-200 rounded-xl p-3 text-xs sm:text-sm text-emerald-950">
+          <span class="font-bold uppercase tracking-wider text-emerald-800 text-[11px] block mb-1">Exemple type :</span>
+          $$(2x-3)^2 - 25 = 0 \iff (2x-3-5)(2x-3+5) = 0 \iff (2x-8)(2x+2) = 0 \implies S_{\mathbb{R}} = \{-1, 4\}$$
+        </div>
+      </div>
+    </section>
+
+    <section class="space-y-4 pt-4 border-t border-slate-200">
+      <div class="flex items-center gap-3 border-b border-sky-200 pb-2">
+        <span class="bg-sky-700 text-white font-black text-sm px-3 py-1 rounded-lg">II</span>
+        <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 uppercase tracking-tight">
+          Signe du Binôme &amp; Inéquations du Premier Degré
+        </h3>
+      </div>
+
+      <p class="text-sm sm:text-base text-slate-700">
+        Soit le binôme affine $P(x) = ax + b$ avec $a \in \mathbb{R}^*$ et $b \in \mathbb{R}$. Il admet une racine unique $x_0 = -\dfrac{b}{a}$.
+      </p>
+
+      <!-- Rule of sign & Table -->
+      <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 sm:p-5 space-y-4">
+        <h4 class="font-bold text-slate-900 text-sm sm:text-base">
+          Règle du signe de $ax + b$ et Tableau Récapitulatif
+        </h4>
+        <p class="text-xs sm:text-sm text-slate-600">
+          Pour tout $x > -\dfrac{b}{a}$, $ax+b$ a le <strong class="text-slate-900">même signe que $a$</strong>. Pour tout $x < -\dfrac{b}{a}$, il a le <strong class="text-slate-900">signe opposé de $a$</strong>.
+        </p>
+
+        <!-- Visual Table -->
+        <div class="overflow-x-auto custom-scroll">
+          <table class="math-table w-full border-collapse border border-slate-300 bg-white text-xs sm:text-sm rounded-xl overflow-hidden shadow-sm">
+            <thead>
+              <tr class="bg-slate-100 border-b border-slate-300">
+                <th class="py-2.5 px-4 font-bold border-r border-slate-300 w-1/4">$x$</th>
+                <th class="py-2.5 px-4">$-\infty$</th>
+                <th class="py-2.5 px-6 font-bold text-sky-800">$-\dfrac{b}{a}$</th>
+                <th class="py-2.5 px-4">$+\infty$</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="py-3 px-4 font-semibold border-r border-slate-300 bg-slate-50">Signe de $ax + b$</td>
+                <td class="py-3 px-4 text-slate-600">Signe opposé de $a$</td>
+                <td class="py-3 px-4 font-bold text-slate-900 border-x border-slate-200 bg-sky-50/50">0</td>
+                <td class="py-3 px-4 text-slate-600">Signe de $a$</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Golden Rule for Inequality Reversal -->
+      <div class="bg-amber-50/80 border-l-4 border-amber-500 rounded-r-2xl p-4 sm:p-5 space-y-3">
+        <div class="flex items-center gap-2 text-amber-900 font-extrabold text-sm sm:text-base">
+          <svg class="w-5 h-5 text-amber-600" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+          </svg>
+          Règle d'or de l'inversion du sens de l'inégalité
+        </div>
+        <p class="text-xs sm:text-sm text-amber-950">Soient $A$ et $B$ deux réels :</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs sm:text-sm">
+          <div class="bg-white/80 p-3 rounded-xl border border-amber-200">
+            <p class="font-bold text-emerald-700 mb-1">Si $k > 0$ :</p>
+            <p>$A \le B \iff kA \le kB \quad \text{et} \quad \dfrac{A}{k} \le \dfrac{B}{k}$</p>
+            <span class="text-[11px] text-slate-500 italic block mt-1">(Le sens est conservé)</span>
+          </div>
+          <div class="bg-white/80 p-3 rounded-xl border border-rose-300">
+            <p class="font-bold text-rose-700 mb-1">Si $k < 0$ :</p>
+            <p>$A \le B \iff kA \ge kB \quad \text{et} \quad \dfrac{A}{k} \ge \dfrac{B}{k}$</p>
+            <span class="text-[11px] text-rose-600 font-semibold block mt-1">(Le sens s'inverse obligatoirement !)</span>
+          </div>
+        </div>
+        <div class="bg-white/90 p-3 rounded-xl border border-amber-200 text-xs sm:text-sm text-slate-800">
+          <strong class="text-amber-900">Exemple :</strong>
+          $-5x + 15 \le 0 \iff -5x \le -15 \iff x \ge \dfrac{-15}{-5} \iff x \ge 3 \implies S_{\mathbb{R}} = [3, +\infty[$
+        </div>
+      </div>
+    </section>
+
+    <section class="space-y-4 pt-4 border-t border-slate-200 page-break">
+      <div class="flex items-center gap-3 border-b border-sky-200 pb-2">
+        <span class="bg-sky-700 text-white font-black text-sm px-3 py-1 rounded-lg">III</span>
+        <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 uppercase tracking-tight">
+          Équations et Inéquations Rationnelles (Quotients)
+        </h3>
+      </div>
+
+      <p class="text-sm sm:text-base text-slate-700 leading-relaxed">
+        Une équation ou inéquation rationnelle contient l'inconnue au dénominateur : 
+        $\dfrac{A(x)}{B(x)} = 0$ ou $\dfrac{A(x)}{B(x)} \le 0$.
+      </p>
+
+      <!-- Protocol in 4 Steps -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-sky-50/60 border border-sky-200 p-4 rounded-2xl">
+          <div class="flex items-center gap-2 font-bold text-sky-900 text-sm mb-1">
+            <span class="w-6 h-6 rounded-full bg-sky-700 text-white text-xs flex items-center justify-center">1</span>
+            Domaine de Validité ($D_v$) / Condition d'existence
+          </div>
+          <p class="text-xs text-slate-600">
+            Le dénominateur ne doit jamais s'annuler : 
+            <span class="font-mono font-semibold text-slate-900">$D_v = \{x \in \mathbb{R} \mid B(x) \neq 0\}$</span>.
+          </p>
+        </div>
+
+        <div class="bg-sky-50/60 border border-sky-200 p-4 rounded-2xl">
+          <div class="flex items-center gap-2 font-bold text-sky-900 text-sm mb-1">
+            <span class="w-6 h-6 rounded-full bg-sky-700 text-white text-xs flex items-center justify-center">2</span>
+            Transposition &amp; Réduction au même dénominateur
+          </div>
+          <p class="text-xs text-slate-600">
+            <strong class="text-rose-700">Ne jamais faire de produit en croix</strong> pour une inéquation ! Obtenir impérativement $\dfrac{N(x)}{D(x)} \le 0$.
+          </p>
+        </div>
+
+        <div class="bg-sky-50/60 border border-sky-200 p-4 rounded-2xl">
+          <div class="flex items-center gap-2 font-bold text-sky-900 text-sm mb-1">
+            <span class="w-6 h-6 rounded-full bg-sky-700 text-white text-xs flex items-center justify-center">3</span>
+            Tableau conjoint de signes
+          </div>
+          <p class="text-xs text-slate-600">
+            Calculer les racines de $N(x)$ et $D(x)$. Placer la <strong class="text-rose-700">double barre ($\|$)</strong> sous les racines de $D(x)$ (valeurs interdites).
+          </p>
+        </div>
+
+        <div class="bg-sky-50/60 border border-sky-200 p-4 rounded-2xl">
+          <div class="flex items-center gap-2 font-bold text-sky-900 text-sm mb-1">
+            <span class="w-6 h-6 rounded-full bg-sky-700 text-white text-xs flex items-center justify-center">4</span>
+            Conclusion de l'ensemble solution $S_{\mathbb{R}}$
+          </div>
+          <p class="text-xs text-slate-600">
+            Lire l'intervalle selon le signe cherché ($+$ ou $-$) en respectant l'<strong>ouverture stricte des crochets</strong> aux valeurs interdites.
+          </p>
+        </div>
+      </div>
+
+      <!-- Complete worked example -->
+      <div class="bg-white border-2 border-sky-100 rounded-2xl p-4 sm:p-6 shadow-sm space-y-4">
+        <h4 class="font-extrabold text-slate-900 text-sm sm:text-base flex items-center gap-2">
+          <span class="px-2 py-0.5 rounded bg-sky-100 text-sky-800 text-xs uppercase font-bold tracking-wide">Exemple type corrigé</span>
+          Résoudre dans $\mathbb{R}$ : $\dfrac{2x-4}{3-x} \ge 1$
+        </h4>
+
+        <div class="space-y-2 text-xs sm:text-sm text-slate-700">
+          <p>• <strong>Condition d'existence :</strong> $3 - x \neq 0 \iff x \neq 3 \implies D_v = \mathbb{R} \setminus \{3\}$.</p>
+          <p>• <strong>Transposition et mise au même dénominateur :</strong>
+            $$\dfrac{2x-4}{3-x} - 1 \ge 0 \iff \dfrac{2x-4-(3-x)}{3-x} \ge 0 \iff \dfrac{3x-7}{3-x} \ge 0$$
+          </p>
+          <p>• <strong>Racines :</strong> Numérateur : $3x - 7 = 0 \iff x = \dfrac{7}{3}$ &nbsp;|&nbsp; Dénominateur : $3 - x = 0 \iff x = 3$ (valeur interdite).</p>
+        </div>
+
+        <!-- Sign Table -->
+        <div class="overflow-x-auto custom-scroll">
+          <table class="math-table w-full border-collapse border border-slate-300 text-xs sm:text-sm rounded-xl overflow-hidden shadow-sm">
+            <thead>
+              <tr class="bg-slate-100 border-b border-slate-300">
+                <th class="py-2.5 px-4 font-bold border-r border-slate-300 w-1/4">$x$</th>
+                <th class="py-2.5 px-4">$-\infty$</th>
+                <th class="py-2.5 px-6 font-bold text-sky-800">$\dfrac{7}{3}$</th>
+                <th class="py-2.5 px-6 font-bold text-rose-700">3</th>
+                <th class="py-2.5 px-4">$+\infty$</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200">
+              <tr>
+                <td class="py-2 px-4 font-semibold border-r border-slate-300 bg-slate-50">Signe de $3x - 7$ $(a = 3 > 0)$</td>
+                <td class="py-2 px-4 text-slate-600">$-$</td>
+                <td class="py-2 px-4 font-bold text-slate-900 border-x border-slate-200 bg-sky-50/50">0</td>
+                <td class="py-2 px-4 text-slate-600">$+$</td>
+                <td class="py-2 px-4 text-slate-600">$+$</td>
+              </tr>
+              <tr>
+                <td class="py-2 px-4 font-semibold border-r border-slate-300 bg-slate-50">Signe de $3 - x$ $(a = -1 < 0)$</td>
+                <td class="py-2 px-4 text-slate-600">$+$</td>
+                <td class="py-2 px-4 text-slate-600 border-x border-slate-200">$+$</td>
+                <td class="py-2 px-4 font-bold text-slate-900 border-r border-slate-200 bg-rose-50/50">0</td>
+                <td class="py-2 px-4 text-slate-600">$-$</td>
+              </tr>
+              <tr class="bg-amber-50/50 font-bold">
+                <td class="py-2.5 px-4 font-bold border-r border-slate-300 bg-amber-100/60 text-slate-900">Signe du quotient $Q(x)$</td>
+                <td class="py-2.5 px-4 text-slate-700">$-$</td>
+                <td class="py-2.5 px-4 text-emerald-800 border-x border-slate-300 font-extrabold bg-emerald-100/60">0</td>
+                <td class="py-2.5 px-4 text-rose-700 border-r border-slate-300 font-black bg-rose-100/60">||</td>
+                <td class="py-2.5 px-4 text-slate-700">$-$</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="bg-sky-50 p-3 rounded-xl border border-sky-200 flex items-center justify-between flex-wrap gap-2 text-xs sm:text-sm">
+          <span>On cherche $Q(x) \ge 0$ :</span>
+          <span class="font-extrabold text-sky-900 text-sm sm:text-base">Conclusion : $S_{\mathbb{R}} = \left[ \dfrac{7}{3}, 3 \right[$</span>
+          <span class="text-xs text-slate-500 italic">(Crochet ouvert en 3 car $3 \notin D_v$)</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="space-y-4 pt-4 border-t border-slate-200">
+      <div class="flex items-center gap-3 border-b border-sky-200 pb-2">
+        <span class="bg-sky-700 text-white font-black text-sm px-3 py-1 rounded-lg">IV</span>
+        <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 uppercase tracking-tight">
+          Équations et Inéquations avec Valeur Absolue
+        </h3>
+      </div>
+
+      <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-xs sm:text-sm text-slate-700 space-y-1">
+        <p class="font-bold text-slate-900">Rappel de la définition : Pour tout $X \in \mathbb{R}$ :</p>
+        <p>$$|X| = \begin{cases} X & \text{si } X \ge 0 \\ -X & \text{si } X \le 0 \end{cases} \qquad \text{et} \qquad |X| \ge 0 \quad \text{toujours !}$$</p>
+      </div>
+
+      <!-- Properties Table -->
+      <h4 class="font-bold text-slate-900 text-sm sm:text-base">
+        Propriétés Fondamentales ($r$ désigne un réel strictement positif : $r > 0$)
+      </h4>
+
+      <div class="overflow-x-auto rounded-2xl border border-slate-200 shadow-sm custom-scroll">
+        <table class="w-full text-left text-xs sm:text-sm">
+          <thead class="bg-slate-900 text-white uppercase text-[11px] tracking-wider">
+            <tr>
+              <th class="py-3 px-4">Équation / Inéquation</th>
+              <th class="py-3 px-4">Équivalence Logique</th>
+              <th class="py-3 px-4">Structure de la Solution</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200 bg-white">
+            <tr class="hover:bg-slate-50">
+              <td class="py-3 px-4 font-bold text-sky-800">$|A(x)| = r$</td>
+              <td class="py-3 px-4">$A(x) = r \quad \text{ou} \quad A(x) = -r$</td>
+              <td class="py-3 px-4 text-slate-600">Deux valeurs discrètes</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3 px-4 font-bold text-sky-800">$|A(x)| = |B(x)|$</td>
+              <td class="py-3 px-4">$A(x) = B(x) \quad \text{ou} \quad A(x) = -B(x)$</td>
+              <td class="py-3 px-4 text-slate-600">Deux équations du 1<sup>er</sup> degré</td>
+            </tr>
+            <tr class="hover:bg-slate-50 bg-sky-50/20">
+              <td class="py-3 px-4 font-bold text-sky-800">$|A(x)| \le r$</td>
+              <td class="py-3 px-4">$-r \le A(x) \le r$</td>
+              <td class="py-3 px-4 text-slate-700 font-semibold">Un intervalle borné (segment)</td>
+            </tr>
+            <tr class="hover:bg-slate-50 bg-sky-50/20">
+              <td class="py-3 px-4 font-bold text-sky-800">$|A(x)| \ge r$</td>
+              <td class="py-3 px-4">$A(x) \ge r \quad \text{ou} \quad A(x) \le -r$</td>
+              <td class="py-3 px-4 text-slate-700 font-semibold">Réunion de deux demi-droites</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3 px-4 font-bold text-amber-700">$|A(x)| \le 0$</td>
+              <td class="py-3 px-4">$A(x) = 0$</td>
+              <td class="py-3 px-4 text-slate-600">Racine unique de $A(x)$</td>
+            </tr>
+            <tr class="hover:bg-slate-50 bg-rose-50/40">
+              <td class="py-3 px-4 font-bold text-rose-700">$|A(x)| < 0$ ou $|A(x)| = -r$</td>
+              <td class="py-3 px-4 text-rose-700 font-medium">Impossible (car $|A(x)| \ge 0$)</td>
+              <td class="py-3 px-4 font-bold text-rose-700">$S_{\mathbb{R}} = \emptyset$</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Case study method -->
+      <div class="border border-indigo-200 bg-indigo-50/50 rounded-2xl p-4 sm:p-5 space-y-2">
+        <h5 class="font-extrabold text-indigo-950 text-sm flex items-center gap-2">
+          <svg class="w-4 h-4 text-indigo-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          Méthode générale par disjonction de cas (Somme de valeurs absolues)
+        </h5>
+        <p class="text-xs sm:text-sm text-indigo-900 font-medium">Pour résoudre une équation du type $|2x - 4| + |x + 1| = 5$ :</p>
+        <ol class="list-decimal list-inside space-y-1 text-xs sm:text-sm text-slate-700 pl-2">
+          <li><strong>Dresser un tableau</strong> avec les zéros respectifs de chaque expression ($x = 2$ et $x = -1$).</li>
+          <li><strong>Exprimer les termes sans le symbole valeur absolue</strong> sur chaque intervalle ($]-\infty, -1]$, $[-1, 2]$, $[2, +\infty[$).</li>
+          <li><strong>Résoudre l'équation affine obtenue</strong> sur chaque intervalle et vérifier la cohérence de la solution dans l'intervalle considéré.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="space-y-4 pt-4 border-t border-slate-200 page-break">
+      <div class="flex items-center gap-3 border-b border-sky-200 pb-2">
+        <span class="bg-sky-700 text-white font-black text-sm px-3 py-1 rounded-lg">V</span>
+        <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 uppercase tracking-tight">
+          Équations et Inéquations avec Radicaux (Racine Carrée)
+        </h3>
+      </div>
+
+      <p class="text-sm sm:text-base text-slate-700">
+        Soit l'expression $\sqrt{A(x)}$. Elle n'est définie dans $\mathbb{R}$ que si le radicande est positif : <span class="font-bold text-slate-900">$A(x) \ge 0$</span>. De plus, on a toujours <span class="font-bold text-slate-900">$\sqrt{A(x)} \ge 0$</span>.
+      </p>
+
+      <!-- Equivalence Theorems Table -->
+      <div class="overflow-x-auto rounded-2xl border border-slate-200 shadow-sm custom-scroll">
+        <table class="w-full text-left text-xs sm:text-sm">
+          <thead class="bg-slate-900 text-white uppercase text-[11px] tracking-wider">
+            <tr>
+              <th class="py-3 px-4 w-1/4">Forme type</th>
+              <th class="py-3 px-4 w-1/2">Système d'Équivalences Logiques</th>
+              <th class="py-3 px-4 w-1/4">Remarques Capitales</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200 bg-white">
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-bold text-sky-800">$\sqrt{A(x)} = \sqrt{B(x)}$</td>
+              <td class="py-3.5 px-4 font-medium">$$\begin{cases} A(x) = B(x) \\ A(x) \ge 0 \quad (\text{ou } B(x) \ge 0) \end{cases}$$</td>
+              <td class="py-3.5 px-4 text-slate-600 text-xs">Une seule condition suffit car ils sont égaux.</td>
+            </tr>
+            <tr class="hover:bg-slate-50 bg-amber-50/30">
+              <td class="py-3.5 px-4 font-bold text-sky-800">$\sqrt{A(x)} = B(x)$</td>
+              <td class="py-3.5 px-4 font-medium">$$\begin{cases} B(x) \ge 0 \quad \text{(Condition d'accord)} \\ A(x) = [B(x)]^2 \end{cases}$$</td>
+              <td class="py-3.5 px-4 text-amber-800 font-semibold text-xs">L'élévation au carré exige obligatoirement $B(x) \ge 0$ !</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-bold text-sky-800">$\sqrt{A(x)} \le B(x)$</td>
+              <td class="py-3.5 px-4 font-medium">$$\begin{cases} A(x) \ge 0 \quad \text{(Existence de la racine)} \\ B(x) \ge 0 \quad \text{(Positivité obligatoire)} \\ A(x) \le [B(x)]^2 \end{cases}$$</td>
+              <td class="py-3.5 px-4 text-slate-600 text-xs">Système de 3 inéquations simultanées (intersection).</td>
+            </tr>
+            <tr class="hover:bg-slate-50 bg-sky-50/20">
+              <td class="py-3.5 px-4 font-bold text-sky-800">$\sqrt{A(x)} > B(x)$</td>
+              <td class="py-3.5 px-4 text-xs sm:text-sm">
+                <span class="font-bold text-slate-800">Disjonction de 2 cas :</span><br>
+                • <strong>Cas 1 :</strong> $B(x) < 0$ et $A(x) \ge 0$<br>
+                • <strong>Cas 2 :</strong> $B(x) \ge 0$ et $A(x) > [B(x)]^2$
+              </td>
+              <td class="py-3.5 px-4 text-slate-600 text-xs">Solution = union des solutions des deux cas.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Radical Example -->
+      <div class="bg-white border-2 border-slate-200 rounded-2xl p-4 sm:p-6 space-y-3">
+        <h4 class="font-bold text-slate-900 text-xs sm:text-sm uppercase tracking-wide text-sky-800">
+          Exemple type récapitulatif : Résoudre $\sqrt{2x+6} = x+3$
+        </h4>
+        <div class="space-y-2 text-xs sm:text-sm text-slate-700">
+          <p><strong>1. Condition d'existence et de positivité :</strong> $2x + 6 \ge 0 \iff x \ge -3$ et $x + 3 \ge 0 \iff x \ge -3$.</p>
+          <p><strong>2. Élévation au carré :</strong>
+            $$2x+6 = (x+3)^2 \iff 2(x+3) = (x+3)^2 \iff (x+3)^2 - 2(x+3) = 0$$
+            $$\iff (x+3)[(x+3)-2] = 0 \iff (x+3)(x+1) = 0 \implies x = -3 \quad \text{ou} \quad x = -1$$
+          </p>
+          <p><strong>3. Vérification des conditions :</strong> $-3 \ge -3$ (Vrai) et $-1 \ge -3$ (Vrai).
+            <span class="font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 ml-2">Conclusion : $S_{\mathbb{R}} = \{-3, -1\}$</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="space-y-4 pt-4 border-t border-slate-200">
+      <div class="flex items-center gap-3 border-b border-rose-200 pb-2">
+        <span class="bg-rose-700 text-white font-black text-sm px-3 py-1 rounded-lg">VI</span>
+        <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 uppercase tracking-tight">
+          Pièges Fréquents et Stratégies de Contrôle
+        </h3>
+      </div>
+
+      <p class="font-bold text-rose-800 text-sm sm:text-base">
+        Les 5 Erreurs « Pièges » les plus Sanctionnées en 2<sup>ème</sup> Année :
+      </p>
+
+      <div class="space-y-3">
+        <!-- Trap 1 -->
+        <div class="p-4 rounded-2xl bg-rose-50/60 border border-rose-200 text-xs sm:text-sm space-y-1">
+          <p class="font-bold text-rose-950">1. La division par l'inconnue sans précaution :</p>
+          <p class="text-rose-900 font-mono line-through">$x(x - 5) = 3x \implies x - 5 = 3$ (FAUX : vous perdez la racine $x = 0$ !)</p>
+          <p class="text-emerald-800 font-medium">✓ Réflexe correct : Transposer et factoriser : $x(x-5) - 3x = 0 \iff x(x-8) = 0 \implies S_{\mathbb{R}} = \{0, 8\}$.</p>
+        </div>
+
+        <!-- Trap 2 -->
+        <div class="p-4 rounded-2xl bg-rose-50/60 border border-rose-200 text-xs sm:text-sm space-y-1">
+          <p class="font-bold text-rose-950">2. Le produit en croix dans une inéquation :</p>
+          <p class="text-rose-900 font-mono line-through">$\dfrac{2}{x-1} \le 1 \implies 2 \le x-1$ (FAUX : le signe de $x-1$ est inconnu !)</p>
+          <p class="text-emerald-800 font-medium">✓ Réflexe correct : Tout transposer à gauche, réduire au même dénominateur, puis dresser un tableau de signes.</p>
+        </div>
+
+        <!-- Trap 3 -->
+        <div class="p-4 rounded-2xl bg-rose-50/60 border border-rose-200 text-xs sm:text-sm space-y-1">
+          <p class="font-bold text-rose-950">3. Oubli de la condition de positivité pour $\sqrt{A(x)} = B(x)$ :</p>
+          <p class="text-slate-700">Écrire immédiatement $A(x) = [B(x)]^2$ sans imposer $B(x) \ge 0$ introduit de fausses solutions (ex : $\sqrt{x} = -2$ n'a aucune solution car $-2 < 0$, alors que $(-2)^2 = 4$).</p>
+        </div>
+
+        <!-- Trap 4 -->
+        <div class="p-4 rounded-2xl bg-rose-50/60 border border-rose-200 text-xs sm:text-sm space-y-1">
+          <p class="font-bold text-rose-950">4. Erreur sur les bornes d'intervalles (Valeurs interdites) :</p>
+          <p class="text-slate-700">Même pour une inéquation au sens large ($\le$ ou $\ge$), la valeur qui annule le dénominateur <strong class="text-rose-800">s'exclut toujours avec un crochet ouvert</strong> : ex. $[a, b[$.</p>
+        </div>
+
+        <!-- Trap 5 -->
+        <div class="p-4 rounded-2xl bg-rose-50/60 border border-rose-200 text-xs sm:text-sm space-y-1">
+          <p class="font-bold text-rose-950">5. Confusion entre $\cap$ (ET) et $\cup$ (OU) :</p>
+          <p class="text-slate-700">• Un système d'inéquations ou une condition conjointe correspond à une <strong class="text-slate-900">intersection ($\cap$)</strong>.</p>
+          <p class="text-slate-700">• Une équation produit nul ou une disjonction de cas correspond à une <strong class="text-slate-900">union ($\cup$)</strong>.</p>
+        </div>
+      </div>
+
+      <!-- Professor Advice Card -->
+      <div class="mt-6 bg-gradient-to-r from-slate-900 to-sky-950 text-white rounded-2xl p-5 shadow-lg border border-sky-800">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-xl bg-sky-600 flex items-center justify-center shrink-0 text-2xl shadow">
+            💡
+          </div>
+          <div>
+            <h4 class="font-black text-sky-300 text-sm uppercase tracking-wider">
+              Conseil Clé du Professeur Grichi Borhen
+            </h4>
+            <blockquote class="italic text-slate-100 text-xs sm:text-sm mt-1 leading-relaxed border-l-2 border-sky-400 pl-3">
+              « En mathématiques, la rigueur dans la rédaction des conditions d'existence est la garantie de 50% de la note. Ne vous précipitez jamais vers le calcul avant d'avoir posé le cadre de travail ! »
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-3">
+      <div>
+        <p class="font-semibold text-slate-700">Lycée Oueslatia — Prof. Grichi Borhen</p>
+        <p>Fiche Méthodes &amp; Résumé Officiel de Cours</p>
+      </div>
+      <div class="text-center sm:text-right">
+        <p class="font-mono bg-slate-100 px-3 py-1 rounded-full border border-slate-200 text-slate-700 inline-block font-medium">Année Scolaire 2026-2027</p>
+        <p class="text-[10px] text-slate-400 mt-1">Conforme aux programmes du Ministère de l'Éducation Tunisien</p>
+      </div>
+    </footer>
+
+  </main>
+
+  <script>
+    function downloadSelf() {
+      try {
+        const fullContent = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+        const blob = new Blob([fullContent], { type: 'text/html;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'Resume_Equations_Inequations_2eme_Prof_Grichi.html';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(() => URL.revokeObjectURL(url), 2000);
+      } catch (err) {
+        window.print();
+      }
+    }
+  </script>
+
+</body>
+</html>
